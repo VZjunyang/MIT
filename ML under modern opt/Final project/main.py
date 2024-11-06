@@ -1,7 +1,7 @@
-from dataloader import GraphTextDataset, GraphDataset, TextDataset
+from utils.dataloader import GraphTextDataset, GraphDataset, TextDataset
 from torch_geometric.data import DataLoader
 from torch.utils.data import DataLoader as TorchDataLoader
-from Model import Model
+from models.Model import BaseModel
 import numpy as np
 from transformers import AutoTokenizer
 import torch
@@ -31,7 +31,7 @@ learning_rate = 2e-5
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True)
 train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 
-model = Model(model_name=model_name, num_node_features=300, nout=768, nhid=300, graph_hidden_channels=300) # nout = bert model hidden dim
+model = BaseModel(model_name=model_name, num_node_features=300, nout=768, nhid=300, graph_hidden_channels=300) # nout = bert model hidden dim
 model.to(device)
 
 optimizer = optim.AdamW(model.parameters(), lr=learning_rate,
