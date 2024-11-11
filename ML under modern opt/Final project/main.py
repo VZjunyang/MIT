@@ -89,7 +89,7 @@ for i in range(nb_epochs):
     print('-----EPOCH'+str(i+1)+'----- done.  Validation loss: ', str(val_loss/len(val_loader)) )
     if best_validation_loss==val_loss:
         print('validation loss improoved saving checkpoint...')
-        save_path = os.path.join('./', 'model'+str(i)+'.pt')
+        save_path = os.path.join('./logs/', 'model'+str(i)+'.pt')
         torch.save({
         'epoch': i,
         'model_state_dict': model.state_dict(),

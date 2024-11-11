@@ -43,7 +43,7 @@ class TextEncoder(nn.Module):
         #print(encoded_text.last_hidden_state.size())
         return encoded_text.last_hidden_state[:,0,:]
     
-class BaseModel(nn.Module):
+class BaseModel(Model):
     def __init__(self, model_name, num_node_features, nout, nhid, graph_hidden_channels):
         super(Model, self).__init__()
         self.graph_encoder = GraphEncoder(num_node_features, nout, nhid, graph_hidden_channels)
